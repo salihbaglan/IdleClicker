@@ -5,76 +5,49 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
 		<title>Idle Clicker</title>
 		<style>
-html, body, #canvas {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-
-body {
-	color: white;
-	background-color: black;
-	overflow: hidden;
-	touch-action: none;
-}
-
-#canvas {
-	display: block;
-}
-
-#canvas:focus {
-	outline: none;
-}
-
-#status, #status-splash, #status-progress {
-	position: absolute;
-	left: 0;
-	right: 0;
-}
-
-#status, #status-splash {
-	top: 0;
-	bottom: 0;
-}
-
+/* CUSTOM GODOT LOADER - UNITY STYLE */
+html, body, #canvas { margin: 0; padding: 0; border: 0; }
+body { color: white; background-color: #000000; overflow: hidden; touch-action: none; }
+#canvas { display: block; }
+#canvas:focus { outline: none; }
 #status {
-	background-color: #242424;
+	position: absolute;
+	left: 0; right: 0; top: 0; bottom: 0;
+	background: linear-gradient(135deg, #051937, #004d7a, #008793);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	visibility: hidden;
 }
-
 #status-splash {
-	max-height: 100%;
-	max-width: 100%;
-	margin: auto;
-}
-
-#status-splash.show-image--false {
-	display: none;
-}
-
-#status-splash.fullsize--true {
-	height: 100%;
+	position: static;
+	max-width: 160px;
+	max-height: 160px;
+	margin: 0;
 	width: 100%;
+	height: 100%;
 	object-fit: contain;
 }
-
-#status-splash.use-filter--false {
-	image-rendering: pixelated;
-}
-
-#status-progress, #status-notice {
-	display: none;
-}
+#status-splash.show-image--false { display: none; }
+#status-splash.use-filter--false { image-rendering: pixelated; }
 
 #status-progress {
-	bottom: 10%;
-	width: 50%;
-	margin: 0 auto;
+	position: static;
+	width: 320px;
+	max-width: 80%;
+	height: 22px;
+	margin-top: 35px;
+	appearance: none;
+	-webkit-appearance: none;
+	border: none;
+	background-color: rgba(0, 0, 0, 0.4);
+	border-radius: 12px;
+	padding: 0;
 }
+#status-progress::-webkit-progress-bar { background-color: transparent; }
+#status-progress::-webkit-progress-value { background-color: #ffffff; border-radius: 12px; }
+#status-progress::-moz-progress-bar { background-color: #ffffff; border-radius: 12px; }
 
 #status-notice {
 	background-color: #5b3943;
@@ -88,9 +61,10 @@ body {
 	padding: 1rem;
 	text-align: center;
 	z-index: 1;
+	display: none;
 }
 		</style>
-		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
+<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
 
 	</head>
@@ -104,14 +78,14 @@ body {
 		</noscript>
 
 		<div id="status">
-			<img id="status-splash" class="show-image--true fullsize--true use-filter--true" src="index.png" alt="">
+			<img id="status-splash" class="show-image--true use-filter--true" src="index.png" alt="">
 			<progress id="status-progress"></progress>
 			<div id="status-notice"></div>
 		</div>
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":5113112,"index.wasm":35749181},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":5390916,"index.wasm":37695054},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
